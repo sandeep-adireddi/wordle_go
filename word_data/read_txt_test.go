@@ -34,7 +34,7 @@ func TestWordsOutput(t *testing.T) {
 	}
 	fmt.Println(found)
 
-	if ( found == 0) {
+	if found == 0 {
 		t.Fatalf(`Not read file properly`)
 	}
 }

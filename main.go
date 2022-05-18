@@ -11,11 +11,11 @@ import (
 	worddata "example.com/wordleclone/word_data"
 )
 
-func isValidInput(userInput string) (bool,string) {
+func isValidInput(userInput string) (bool, string) {
 	if len(userInput) != 5 {
-		return false,"⚠️  Enter only 5 letter word ⚠️"
+		return false, "⚠️  Enter only 5 letter word ⚠️"
 	}
-	return true,""
+	return true, ""
 }
 func colorPrintOutput(output, userInput string) {
 	var Green = "\033[32m"
@@ -48,21 +48,19 @@ func main() {
 	for want_to_play == "y" {
 		random_word_index := random_genrator.Intn(len(words))
 
-		fmt.Println(words[random_word_index])
-
 		game.Start(words[random_word_index], 6)
 		var userInput string
 		for !game.IsGameOver() {
-			
+
 			fmt.Println("Number of tries Left: ", game.GetTriesLeft())
 			fmt.Scanf("%s", &userInput)
-			if ok,err:=isValidInput(userInput);ok {
+			if ok, err := isValidInput(userInput); ok {
 				game.Update(userInput)
 				colorPrintOutput(game.GetGameOutput(), userInput)
 				fmt.Println()
 				if game.IsWinner() {
 					fmt.Println("🎉you won🎉")
-					fmt.Printf("Played: %d Won: %d Current Streak: %d Max Streak: %d\n",game.GetPlayedCount(),game.GetWinCount(),game.GetWinStreakCount(),game.GetMaxWinStreakCount())
+					fmt.Printf("Played: %d Won: %d Current Streak: %d Max Streak: %d\n", game.GetPlayedCount(), game.GetWinCount(), game.GetWinStreakCount(), game.GetMaxWinStreakCount())
 					break
 				}
 			} else {
@@ -72,7 +70,7 @@ func main() {
 		}
 		if !game.IsWinner() && game.IsGameOver() {
 			fmt.Println("Answer is: ", words[random_word_index])
-			fmt.Printf("Played: %d Won: %d Current Streak: %d Max Streak: %d\n",game.GetPlayedCount(),game.GetWinCount(),game.GetWinStreakCount(),game.GetMaxWinStreakCount())
+			fmt.Printf("Played: %d Won: %d Current Streak: %d Max Streak: %d\n", game.GetPlayedCount(), game.GetWinCount(), game.GetWinStreakCount(), game.GetMaxWinStreakCount())
 			fmt.Println("Better luck next time 🤝")
 		}
 		fmt.Printf("Wanna play again [y/n]: ")

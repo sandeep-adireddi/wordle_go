@@ -1,7 +1,6 @@
 package wordlegame
 
 import (
-
 	"testing"
 )
 
@@ -42,7 +41,6 @@ func TestGameUpdateState(t *testing.T) {
 	if string(game.gameOutput) != "**" {
 		t.Fatalf("gameoutput not updated")
 	}
-	
 
 }
 func TestGameOver(t *testing.T) {
@@ -69,89 +67,89 @@ func TestIsWinner(t *testing.T) {
 	game := *NewWordleGame()
 	game.Start("start", 6)
 	game.Update("patti")
-	if game.IsWinner(){
+	if game.IsWinner() {
 		t.Fatalf("Is winner not working")
 
-	} 
+	}
 	game.Update("start")
-	if !game.IsWinner(){
+	if !game.IsWinner() {
 		t.Fatalf("Is winner not working")
 
-	} 
+	}
 
 }
-func TestGamesPlayed(t *testing.T){
+func TestGamesPlayed(t *testing.T) {
 	game := *NewWordleGame()
-	if game.played!=0{
+	if game.played != 0 {
 		t.Fatalf("games played not working")
 	}
 	game.Start("start", 6)
-	if game.played!=1{
+	if game.played != 1 {
 		t.Fatalf("games played not working")
 	}
 
 }
 func TestWinscount(t *testing.T) {
 	game := *NewWordleGame()
-	if game.wins!=0{
+	if game.wins != 0 {
 		t.Fatalf("games wins not working")
 	}
 	game.Start("start", 6)
 	game.Update("patti")
-	if game.wins!=0{
+	if game.wins != 0 {
 		t.Fatalf("games wins not working")
 	}
 	game.Update("start")
-	if game.wins!=1{
+	if game.wins != 1 {
 		t.Fatalf("games wins not working")
 	}
-	}
-func TestWinStreak(t *testing.T){
+}
+func TestWinStreak(t *testing.T) {
 	game := *NewWordleGame()
 	game.Start("start", 6)
-    game.Update("patti")
-	if game.winstreak!=0{
+	game.Update("patti")
+	if game.winstreak != 0 {
 		t.Fatalf("games winsstreak not working")
 	}
 	game.Update("start")
-	if game.winstreak!=1{
+	if game.winstreak != 1 {
 		t.Fatalf("games winstreak not working")
 	}
 	game.Start("happy", 6)
 	game.Update("happy")
-	if game.winstreak!=2{
+	if game.winstreak != 2 {
 		t.Fatalf("games winstreak not working")
 	}
 	game.Start("makes", 3)
 	game.Update("happy")
 	game.Update("start")
 	game.Update("other")
-	if game.winstreak!=0{
+	if game.winstreak != 0 {
 		t.Fatalf("games winstreak not working")
 	}
 
 }
-func TestMaxWinStreak(t *testing.T){
+func TestMaxWinStreak(t *testing.T) {
 	game := *NewWordleGame()
 	game.Start("start", 6)
-    game.Update("patti")
-	if game.maxwinstreak!=0{
+	game.Update("patti")
+	if game.maxwinstreak != 0 {
 		t.Fatalf("games maxwinsstreak not working")
 	}
 	game.Update("start")
-	if game.maxwinstreak!=1{
+	if game.maxwinstreak != 1 {
 		t.Fatalf("games maxwinstreak not working")
 	}
 	game.Start("happy", 6)
 	game.Update("happy")
-	if game.maxwinstreak!=2{
+	if game.maxwinstreak != 2 {
 		t.Fatalf("games maxwinstreak not working")
 	}
 	game.Start("makes", 3)
 	game.Update("happy")
 	game.Update("start")
 	game.Update("other")
-	if game.maxwinstreak!=2{
+	if game.maxwinstreak != 2 {
 		t.Fatalf("games maxwinstreak not working")
 	}
 	game.Start("makes", 3)
@@ -160,7 +158,7 @@ func TestMaxWinStreak(t *testing.T){
 	game.Update("happy")
 	game.Start("paper", 3)
 	game.Update("paper")
-	if game.maxwinstreak!=3{
+	if game.maxwinstreak != 3 {
 		t.Fatalf("games maxwinstreak not working")
 	}
 }
