@@ -21,7 +21,7 @@ func TestGameStartSate(t *testing.T) {
 }
 func TestGameUpdateState(t *testing.T) {
 	game := *NewWordleGame()
-	game.Start("start", 6)
+	game.Start("kirks", 6)
 	game.Update("patti")
 	game.Update("maker")
 	game.Update("happy")
@@ -31,12 +31,12 @@ func TestGameUpdateState(t *testing.T) {
 	if game.triesLeft != 3 {
 		t.Fatalf("triesLeft not updated")
 	}
-	game.Update("stpak")
-
-	if string(game.gameOutput) != "**_._" {
+	game.Update("kkirs")
+	if string(game.gameOutput) != "*...*" {
+		
 		t.Fatalf("gameoutput not updated")
 	}
-	game.Update("st")
+	game.Update("ki")
 
 	if string(game.gameOutput) != "**" {
 		t.Fatalf("gameoutput not updated")
