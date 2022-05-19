@@ -12,10 +12,12 @@ type wordlegame struct {
 	maxwinstreak uint
 }
 
+var CORRECT, PRESENT, NOTPRESENT = '*', '.', '_'
+
 func createGameOutput(answer, userInput string) string {
 	var output []rune
 	for j := 0; j < len(userInput); j++ {
-		output = append(output, '_')
+		output = append(output, NOTPRESENT)
 	}
 
 	answer_map := make(map[rune]int)
@@ -28,7 +30,7 @@ func createGameOutput(answer, userInput string) string {
 	for pos, char := range userInput {
 
 		if userInput[pos] == answer[pos] {
-			output[pos] = rune('*')
+			output[pos] = CORRECT
 			answer_map[char] -= 1
 
 		}
@@ -37,7 +39,7 @@ func createGameOutput(answer, userInput string) string {
 	for pos, char := range userInput {
 		if val, ok := answer_map[char]; ok && val != 0 && output[pos] != '*' {
 
-			output[pos] = rune('.')
+			output[pos] = PRESENT
 			answer_map[char] -= 1
 		}
 	}
@@ -77,7 +79,7 @@ func (game *wordlegame) Update(userInput string) {
 func (game *wordlegame) IsWinner() bool {
 	var output string
 	for i := 0; i < len(game.answer); i++ {
-		output += "*"
+		output += string(CORRECT)
 	}
 	return game.gameOutput == output
 }

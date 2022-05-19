@@ -33,7 +33,7 @@ func TestGameUpdateState(t *testing.T) {
 	}
 	game.Update("kkirs")
 	if string(game.gameOutput) != "*...*" {
-		
+
 		t.Fatalf("gameoutput not updated")
 	}
 	game.Update("ki")
