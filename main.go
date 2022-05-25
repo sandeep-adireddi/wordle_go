@@ -9,10 +9,12 @@ import (
 
 	wordlegame "example.com/wordleclone/Game_src"
 	worddata "example.com/wordleclone/word_data"
-)	
+)
+
 const Instructions = `1)You have to guess the Wordle in six goes or less
 2)A correct letter turns green, correct letter in the wrong place turns yellow, incorrect letter turns red\n
-3)	`
+3)Letters can be used more than once`
+
 func isValidInput(userInput string) (bool, string) {
 	if len(userInput) != 5 {
 		return false, "⚠️  Enter only 5 letter word ⚠️"
