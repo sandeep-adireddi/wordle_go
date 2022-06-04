@@ -12,7 +12,7 @@ type wordlegame struct {
 	maxwinstreak uint
 }
 
-var CORRECT, PRESENT, NOTPRESENT = '*', '.', '_'
+const CORRECT, PRESENT, NOTPRESENT = '*', '.', '_'
 
 func createGameOutput(answer, userInput string) string {
 	var output []rune
