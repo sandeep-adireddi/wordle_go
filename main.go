@@ -1,3 +1,6 @@
+/*
+package main is main package of this program
+*/
 package main
 
 import (

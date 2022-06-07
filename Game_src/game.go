@@ -1,3 +1,6 @@
+/*
+package wordlegame contains logic for wordle game
+*/
 package wordlegame
 
 type wordlegame struct {
