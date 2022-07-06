@@ -1,3 +1,6 @@
+/*
+package main is main package of this program
+*/
 package main
 
 import (
@@ -12,20 +15,30 @@ import (
 )
 
 const Instructions = `1)You have to guess the Wordle in six goes or less
-2)A correct letter turns green, correct letter in the wrong place turns yellow, incorrect letter turns red\n
-3)Letters can be used more than once`
+2)A correct letter turns green, correct letter in the wrong place turns yellow, incorrect letter turns red
+3)Letters can be used more than once
+4)Every word you enter must be in the word list`
 
-func isValidInput(userInput string) (bool, string) {
+func isValidWord(userInput string, wordData []string) bool {
+	for _, word := range wordData {
+		if userInput == word {
+			return true
+		}
+
+	}
+	return false
+}
+func isValidInput(userInput string, wordData []string) (bool, string) {
 	if len(userInput) != 5 {
 		return false, "⚠️  Enter only 5 letter word ⚠️"
+	}
+	if !isValidWord(userInput, wordData) {
+		return false, "⚠️  Not in word list ⚠️"
 	}
 	return true, ""
 }
 func colorPrintOutput(output, userInput string) {
-	var Green = "\033[32m"
-	var Yellow = "\033[33m"
-	var Red = "\033[31m"
-	var Reset = "\033[0m"
+	const Green, Yellow, Red, Reset = "\033[32m", "\033[33m", "\033[31m", "\033[0m"
 
 	for pos, char := range output {
 
@@ -60,7 +73,7 @@ func main() {
 
 			fmt.Println("Number of tries Left: ", game.GetTriesLeft())
 			fmt.Scanf("%s", &userInput)
-			if ok, err := isValidInput(userInput); ok {
+			if ok, err := isValidInput(userInput, words); ok {
 				game.Update(userInput)
 				colorPrintOutput(game.GetGameOutput(), userInput)
 				fmt.Println()

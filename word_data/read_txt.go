@@ -1,3 +1,6 @@
+/*
+package worddata read words from various input file types into slice 
+*/
 package worddata
 
 import (
