@@ -40,7 +40,7 @@ func createGameOutput(answer, userInput string) string {
 
 	}
 	for pos, char := range userInput {
-		if val, ok := answer_map[char]; ok && val != 0 && output[pos] != '*' {
+		if val, ok := answer_map[char]; ok && val != 0 && output[pos] != CORRECT {
 
 			output[pos] = PRESENT
 			answer_map[char] -= 1
